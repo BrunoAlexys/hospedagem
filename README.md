@@ -48,6 +48,8 @@ npm run dev
 
 | Método | Rota | Descrição |
 |---|---|---|
+| GET | `/api-docs` (ou `/docs`) | Documentação interativa Swagger UI |
+| GET | `/api-docs/json` | Especificação OpenAPI 3.0 em JSON |
 | GET | `/health` | Status da API e do banco |
 | POST | `/appointments` | Cria agendamento |
 | GET | `/appointments?status=&from=&to=` | Lista (filtros opcionais) |

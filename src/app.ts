@@ -2,6 +2,7 @@ import express from 'express';
 import { pool } from './database/pool';
 import { errorHandler, notFoundHandler } from './middlewares/error-handler';
 import { appointmentRoutes } from './routes/appointment.routes';
+import { swaggerRoutes } from './docs/swagger';
 
 export const app = express();
 
@@ -16,6 +17,9 @@ app.get('/health', async (_req, res) => {
     res.status(503).json({ status: 'error', database: 'down' });
   }
 });
+
+app.use('/api-docs', swaggerRoutes);
+app.get('/docs', (_req, res) => res.redirect('/api-docs'));
 
 app.use('/appointments', appointmentRoutes);
 
