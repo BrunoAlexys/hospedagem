@@ -8,7 +8,7 @@ export class AppError extends Error {
     this.name = 'AppError';
   }
 
-  static notFound(message = 'Recurso não encontrado') {
+  static notFound(message = 'Recurso não encontrado no momento, tente mais tarde!') {
     return new AppError(message, 404);
   }
 
