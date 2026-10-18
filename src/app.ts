@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { pool } from './database/pool';
 import { errorHandler, notFoundHandler } from './middlewares/error-handler';
 import { appointmentRoutes } from './routes/appointment.routes';
@@ -7,6 +8,11 @@ import { swaggerRoutes } from './docs/swagger';
 export const app = express();
 
 app.disable('x-powered-by');
+app.use(cors({
+  origin: 'https://agendamentos-frontend-latest.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/health', async (_req, res) => {
